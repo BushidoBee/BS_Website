@@ -4,26 +4,29 @@ session_start();
 
 $user_id = $_SESSION['user_id'];
 
-if(isset($_POST['orders'])){
-    $checkbox = $_POST['checkbox'];
-    $rental_id = $_POST['rental'];
-    $fullname= "";
-    $last_ids = [];
-    $name = $_POST['name'];
-    //alert($name);
+if(isset($_POST['Rentals'])){
+    $rent_pack = $_POST['rental'];
+    $cus_name = $_POST['name'];
+    $location = $_POST['location'];
+    $phone_num = $_POST['phone'];
+    //alert($cus_name);
 
-    //Query the cashier's name to  be inserted to sales table
-    $user_query = mysql_query("SELECT full_name FROM account WHERE acct_id = $user_id");
-    while($row = mysql_fetch_array($user_query)){
-        $fullname = $row['full_name'];
+    //Query the Rental Order to  be inserted to Booking List
+    $user_query = mysql_query("SELECT ord_id, rent_pack, cus_name FROM Rentals WHERE cus_name = $user_id");
+    while($row = mysql_fetch_array($user_query))
+    {
+        $ord_id = $row['rental'];
     }
 
-    //insert orders into orders table
-        $insert = mysql_query("INSERT INTO sales VALUES ('','$fullname',now(),$checkbox)");
+    //insert current rental into the Rentals table
+        $insert = mysql_query("INSERT INTO Rentals VALUES ($user_id,$rent_pack,'$cus_name',$location,$phone_num)");
 
-        if($insert){
-            $last_id = mysql_insert_id();
+        if($insert)
+        {
+            $ord_id = mysql_insert_id();
         }
+        
+        // Bookmark: still editing file up to this point
     foreach($order_id as $key => $value) { //$key = dish_id and $value = quantity
 
 
@@ -32,7 +35,7 @@ if(isset($_POST['orders'])){
 
             $dish = $dish['dish'];
             /*$name = $_POST['name'];*/
-            $order = mysql_query("INSERT INTO orders VALUES ('', '$dish','$value','$last_id','$name')");
+            $order = mysql_query("INSERT INTO Rentals VALUES ('', '$dish','$value','$last_id','$name')");
 
             $query1 = mysql_query("INSERT into a_logs(id,name,activity,a_date) values(0,'$fullname','Added $dish',NOW())");
 
