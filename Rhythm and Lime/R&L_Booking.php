@@ -1,5 +1,5 @@
 <?php
-include 'RLBookDB.php';
+include 'RLBooksDB.php';
 session_start();
 
 $user_id = $_SESSION['user_id'];
@@ -9,25 +9,25 @@ if(isset($_POST['Rentals'])){
     $cus_name = $_POST['name'];
     $location = $_POST['location'];
     $phone_num = $_POST['phone'];
-    //alert($cus_name);
+    alert("New Order for: ", $cus_name, "(",$user_id,")");
 
-    //Query the Rental Order to  be inserted to Booking List
-    $user_query = mysql_query("SELECT ord_id, rent_pack, cus_name FROM Rentals WHERE cus_name = $user_id");
+    //Query the Rental Order to be inserted to Active Booking List
+    $user_query = mysql_query("SELECT ord_id, rent_pack, cus_name FROM Rentals WHERE rent_id = $user_id");
     while($row = mysql_fetch_array($user_query))
     {
         $ord_id = $row['rental'];
     }
 
     //insert current rental into the Rentals table
-        $insert = mysql_query("INSERT INTO Rentals VALUES ($user_id,$rent_pack,'$cus_name',$location,$phone_num)");
+    $new_insert = mysql_query("INSERT INTO Rentals VALUES ($user_id,$rent_pack,'$cus_name',$location,$phone_num)");
 
-        if($insert)
+        if($new_insert)
         {
             $ord_id = mysql_insert_id();
         }
         
         // Bookmark: still editing file up to this point
-    foreach($order_id as $key => $value) { //$key = dish_id and $value = quantity
+        foreach($order_id as $key => $value) { //$key = dish_id and $value = quantity
 
 
         $dish_query = mysql_query("SELECT dish FROM menu WHERE menu_id = $key");
