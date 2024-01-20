@@ -1,18 +1,15 @@
 <?php
-include 'dbconnection.php';
+include 'RLBookDB.php';
 session_start();
 
 $user_id = $_SESSION['user_id'];
 
 if(isset($_POST['orders'])){
     $checkbox = $_POST['checkbox'];
-    $order_id = $_POST['orders'];
+    $rental_id = $_POST['rental'];
     $fullname= "";
     $last_ids = [];
     $name = $_POST['name'];
-
-
-
     //alert($name);
 
     //Query the cashier's name to  be inserted to sales table
