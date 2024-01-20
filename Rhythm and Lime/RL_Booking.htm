@@ -29,5 +29,50 @@
     </div>
 
     </body>
+    <script>
+    function ConfirmOrder(){
+  var orders = {}; 
 
+
+  if($('.food').length>0){
+    var checkbox = 0;
+
+    $('tr.item').each(function()
+    {
+      var order_id = $(this).attr('id');
+      var quantity1 = $(this).find('.quantity').text();
+      var name = $('#name').val();
+
+      orders[order_id] = quantity1;
+
+      })
+
+   console.log(orders);
+
+
+      if ($('#senior-checkbox').prop('checked')) {
+        checkbox = 1;
+      }
+      else
+    {
+        checkbox = 0;
+      }
+   }
+
+  else
+    {
+    alert("No orders taken");
+  }
+    $.ajax({
+      url: "confirm_order.php",
+      type: "POST",
+      async: true,
+      cache: false,
+      data: {orders:orders,checkbox:checkbox,name},
+
+      success: function(html){
+
+     }
+   })
+    <script>
 </html>
