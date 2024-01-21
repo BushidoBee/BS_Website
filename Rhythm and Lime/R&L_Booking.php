@@ -9,13 +9,13 @@ if(isset($_POST['Rentals'])){
     $cus_name = $_POST['name'];
     $location = $_POST['location'];
     $phone_num = $_POST['phone'];
-    alert("New Order for: ", $cus_name, "(",$user_id,")");
+    alert("New Order for: ", $cus_name, " - (",$user_id,")");
 
     //Query the Rental Order to be inserted to Active Booking List
-    $user_query = mysql_query("SELECT ord_id, rent_pack, cus_name FROM Rentals WHERE rent_id = $user_id");
+    $user_query = mysql_query("SELECT rent_id, rent_pack, cus_name FROM Rentals WHERE rent_id = $user_id");
     while($row = mysql_fetch_array($user_query))
     {
-        $ord_id = $row['rental'];
+        $ord_id = $row['rent_id'];
     }
 
     //insert current rental into the Rentals table
