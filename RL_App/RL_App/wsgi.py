@@ -1,5 +1,5 @@
 """
-WSGI config for Rhythm_and_Lime project.
+WSGI config for RL_App project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'Rhythm_and_Lime.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'RL_App.settings')
 
 application = get_wsgi_application()
