@@ -13,7 +13,14 @@
     <link rel="icon" type="image/png" href="RL_Images/Test_image.jfif"/>-->
     <link rel="stylesheet" href="RL_Styles/RhyLi_BasicStyles.css">
 </head>
-    <h1><span><u>Rhythm & Lime Margarita Rentals</u></span></h1>
+    <body>
+    <label for="dog-names">Choose a dog name:</label>
+    <select name="dog-names" id="dog-names">
+        <option value="rigatoni">Rigatoni</option>
+        <option value="chicken-noodle">Chicken-Noodle</option>
+        <option value="puppy-dog">Puppy-Dog</option>
+    </select>
+    <h1><span>Welcome to Rhythm & Lime Margarita Rentals!</span></h1>
     <nav>
         <a href="RhythmandLime.htm">Home Page</a>
         <a href="#">About R&L</a>
@@ -22,11 +29,30 @@
         <a href="#">FAQs</a>
     </nav>
     <div class = "Primary">
-        <p>Book here and now to get the party jumpin'!</p>
+        <p>This is the place to find your best deals to get the party going, and going, and going, and going, and going</p>
+    </div>
+    <div class = "Secondary">
+        <span>Secondary Content</span>
+        <ul>
+            <li>New line</li>
+            <li>New line</li>
+            <li>New line</li>
+        </ul>
+
+    </div>
+    <div class = "Primary">
+        <p>Second text box</p>
     </div>
     <div class = "Tertiary">
-        <span>Rhythm & Lime Inc. | Est. 2023 | Keepin' it Funky!</span>
+        <span>Rhythm & Lime Inc. | Est. 2024 | Keepin' it Funky!</span>
+
     </div>
+
+    <script>
+        $(function() {
+          $('#table').bootstrapTable()
+        })
+      </script>
 
     </body>
 

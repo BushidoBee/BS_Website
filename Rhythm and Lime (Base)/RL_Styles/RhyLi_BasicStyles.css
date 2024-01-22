@@ -97,6 +97,27 @@ p {
     font: 20px bold;
 }
 
+.FormBake {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 40%;
+    display: flex;
+    padding: 5pt;
+    border: solid 6px #b01a1a;
+    border-radius: 15px;
+    align-items: center;
+    color:rgb(10, 72, 18);
+    font-size: x-large;
+    width: fit-content;
+    background: #ffffff none no-repeat scroll 0 0;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.FormBake > label {
+    padding: 5pt;
+}
+
 .Primary {
     background: #f5f5f5;
     border: 11px ridge rgba(38,45,212,0.62);
@@ -134,10 +155,10 @@ p {
     box-shadow: 0px 10px 13px -7px #000000, 5px 5px 1px 0px rgba(0,0,0,0.33);
 }
 
-form {
+footer {
 
 }
 
-footer {
-
+html {
+    scroll-behavior: smooth;
 }
