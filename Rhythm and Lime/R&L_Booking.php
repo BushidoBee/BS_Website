@@ -1,11 +1,11 @@
 <?php
-include 'RLBooksDB.php';
+// include 'RLBooksDB.php';
 session_start();
 
 $user_id = $_SESSION['user_id'];
 
 if(isset($_POST['Rentals'])){
-    $rent_pack = $_POST['rental'];
+    $rent_pack = $_POST['Rentals'];
     $cus_name = $_POST['name'];
     $location = $_POST['location'];
     $phone_num = $_POST['phone'];
