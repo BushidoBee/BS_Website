@@ -6,13 +6,15 @@ import datetime
 class Rental_Orders(models.Model):
     # Fields below cannot be empty
     Rent_Order = models.AutoField(null=False, primary_key=True, editable=False)
-    Cus_id = models.ForeignKey(Users, on_delete=models.CASCADE, default='None')
-    Location = models.TextField(null=False, max_length=50)
+    Cus_id = models.ForeignKey(Users, on_delete=models.CASCADE, null=False, editable=False)
+    Location = models.TextField(null=False, max_length=50, editable=False)
+    Completed = models.BooleanField(null=False)
+    Ord_TS = models.TextField(null=False)
 
 
 # Users Database -- All Users registered at Rhy. & Lime
 class Users(models.Model):
-    # Fields below cannot be empty
+    # All fields cannot be empty
     User_id = models.AutoField(null=False, primary_key=True, editable=False)
     User_fname = models.TextField(null=False, max_length=40)
     User_lname = models.TextField(null=False, max_length=40)
@@ -22,20 +24,24 @@ class Users(models.Model):
 # Products -- Consumables and Details
 class Products(models.Model):
     Code_type = [(FLAV, 'Flavor'),(CNSM, 'Consumable'),(ASST, 'Machines'),(ADVT, 'Advertisement'),(MISC, 'Other')]
-    # Prod_id,  cannot be empty
+    # Prod_id, Prod_type cannot be empty
     Prod_id = models.AutoField(null=False, primary_key=True, editable=False)
-    Prod_type = models.CharField(max_length=4, choices=CAR_TYPES)
-    Prod_name = models.TextField(null=False, max_length=40)
-    Prod_desc = models.TextField(null=False, max_length=40)
-    Available = models.BooleanField(null=false)
+    Prod_type = models.CharField(max_length=4, choices=Code_type, null=False)
+    Prod_name = models.TextField(null=False, max_length=30)
+    Prod_desc = models.TextField(null=False, max_length=1000)
+    Price = models.TextField()
+    Available = models.BooleanField(null=False)
 
 
 # R&L Reviews -- Feedback from Customers
 class Reviews(models.Model):
-    # Fields below cannot be empty
-    review_id = models.AutoField(null=False, primary_key=True, editable=False)
-    Cus_id = models.ForeignKey(Users, on_delete=models.CASCADE, default='None')
+    # All fields cannot be empty
+    Review_id = models.AutoField(null=False, primary_key=True, editable=False)
+    Cus_id = models.ForeignKey(Users, on_delete=models.CASCADE, null=False)
     cus_name = models.TextField(null=False, max_length=40)
+    Rating = models.IntegerField(null=False)
+    Details = models.TextField(null=False)
+    Rvw_TS = models.TextField(null=False)
     ...
 
 
