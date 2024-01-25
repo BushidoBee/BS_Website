@@ -38,7 +38,7 @@ class Reviews(models.Model):
     # All fields cannot be empty
     Review_id = models.AutoField(null=False, primary_key=True, editable=False)
     Cus_id = models.ForeignKey(Users, on_delete=models.CASCADE, null=False)
-    cus_name = models.TextField(null=False, max_length=40)
+    Cus_name = models.TextField(null=False, max_length=40)
     Rating = models.IntegerField(null=False)
     Details = models.TextField(null=False)
     Rvw_TS = models.TextField(null=False)
