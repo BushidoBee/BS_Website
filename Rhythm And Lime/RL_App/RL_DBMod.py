@@ -40,8 +40,10 @@ class Review(models.Model):
 
 # Rental Orders -- Ordering System
 class RentalOrder(models.Model):
+    Package_Options = ['Standard', 'Deluxe', 'Premium', 'Platinum']
     # Fields below cannot be empty
     Rental_Number = models.AutoField(null=False, primary_key=True, editable=False)
+    Package = models.CharField(max_length=10, choices=Package_Options, null=False)
     Cus_id = models.ForeignKey(Account, on_delete=models.CASCADE, null=False, editable=False)
     Location = models.CharField(null=False, max_length=50, editable=False)
     Target_Date = models.DateField()
@@ -51,11 +53,10 @@ class RentalOrder(models.Model):
 
 # Order Details -- All items requested within Package Selected
 class OrderDetail(models.Model):
-    Package_Options = ['Standard', 'Deluxe', 'Premium', 'Platinum']
     Rent_Order = models.ForeignKey(RentalOrder.Rental_Number, null=False, editable=False)
-    Packages = models.CharField(max_length=10, choices=Package_Options, null=False)
     Primary_Flavor = models.ForeignKey(Product, on_delete=models.CASCADE, null=False)
     Secondary_Flavor = models.ForeignKey(Product, on_delete=models.CASCADE, default = 'N/A') #to be continued
+    Items = models.ForeignKey(Product, on.delete=models.CASCADE, default = 'N/A
 #--------------------------------------------------------------------------------------------
 
 
