@@ -26,23 +26,23 @@ urlpatterns = [
     path('admin/', admin.site.urls),
 
      # Home (Index) Page
-    path(route='...', view=process.homepage, name='index'),
+    path(route='', view=process.homepage, name='index'),
 
-     # About Us; Contact Information
-    path(route='...', view=process.contact, name='About'),
+    # About Us; Contact Information
+    # path(route='...', view=process.contact, name='About'),
 
-     # Current (Active) Ordering
-    path(route='...', view=process.order_rental, name='Ordering'),
+    # Current (Active) Ordering
+    # path(route='...', view=process.order_rental, name='Ordering'),
 
-     # Submit Orders/Rentals
-    path(route='...', view=process.submit_rental, name='Rentals'),
+    # Submit Orders/Rentals
+    # path(route='...', view=process.submit_rental, name='Rentals'),
 
-     # Account Creation view
-    path(route='...', view=process.NAME, name='Accounts'),
+    # Account Creation view
+    # path(route='...', view=process.accounts, name='Accounts'),
 
-     # Social Media view
-    path(route='...', view=process.NAME, name='Social'),
+    # Social Media view
+    # path(route='...', view=process.socmedia, name='Social'),
 
     # path for Login/Log-Out
-    path(route='login_logout', view=process.login_logout, name='logout'),
+    # path(route='login_logout', view=process.login_logout, name='logout'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
