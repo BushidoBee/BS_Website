@@ -3,27 +3,27 @@ from .RL_DBMod import Product, Account, Review, RentalOrder
 
 # Main Database classes for viewing information
 class AccountsAdmin(admin.ModelAdmin):
-    list_display = ['User_id', 'First_Name', 'Last_Name', 'Password']
-    search_fields = ['First_Name', 'Last_Name']
+    list_display = ['User_id', 'First_Name', 'Last_Name', 'Email', 'Phone_Number', 'Password']
+    search_fields = ['User_id']
 
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ['Product_id', 'Product_Type', 'Product_Name', 'Password']
-    search_fields = ['First_Name', 'Last_Name']
+    list_display = ['Product_Name', 'Product_Type', 'Product_id', 'Price', 'Product_Description', 'Available']
+    search_fields = ['Product_Type']
 
 class ReviewAdmin(admin.ModelAdmin):
-    list_display = ['User_id', 'First_Name', 'Last_Name', 'Password']
-    search_fields = ['First_Name', 'Last_Name']
+    list_display = ['Review_id', 'Cust_Name', 'Details', 'Rating', 'RVW_TS']
+    search_fields = ['Cust_Name']
 
 class RentalOrderAdmin(admin.ModelAdmin):
-    list_display = ['User_id', 'First_Name', 'Last_Name', 'Password']
-    search_fields = ['First_Name', 'Last_Name']
+    list_display = ['Package', 'Cus_id', 'Rental_Number', 'Location', 'Target_Date', 'Completed']
+    search_fields = ['Completed']
 
 
 # Registered Database Models
-admin.site.register(Product)
-admin.site.register(Account)
-admin.site.register(Review)
-admin.site.register(RentalOrder)
+admin.site.register(Account, AccountsAdmin)
+admin.site.register(Product, ProductAdmin)
+admin.site.register(Review, ReviewAdmin)
+admin.site.register(RentalOrder, RentalOrderAdmin)
 
 #----------------------------------------------------------------------------------------------
 # References 

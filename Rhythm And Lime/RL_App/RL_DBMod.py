@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils.timezone import now
+# from django_cryptography.fields import * # working on package installation
 import datetime
 
 
@@ -11,18 +12,21 @@ class Account(models.Model):
     Last_Name = models.CharField(null=False, max_length=40)
     Phone_Number = models.CharField(null=False, max_length=40)
     Email = models.EmailField(null=False, max_length=30)
-    Password = models.CharField(null=False, max_length=15)
+    Password = models.CharField(max_length=15)
+
+    def __str__(self):
+        return "User #" + str(self.User_id)
 
 
 # Products -- All Products and Descriptions
 class Product(models.Model):
-    Code_type = ['FLAV', 'CNSM', 'ASST', 'ADVT', 'MISC']
+    Code_type = [('Flavor', 'FLAV'), ('Consumable','CNSM'), ('Asset','ASST'), ('Advertisement','ADVT'), ('Miscellaneous','MISC')]
     # Product_id, Product_type cannot be empty
     Product_id = models.AutoField(null=False, primary_key=True, editable=False)
     Product_Type = models.CharField(max_length=15, choices=Code_type, null=False)
     Product_Name = models.CharField(null=False, max_length=25)
     Product_Description = models.TextField(null=False, max_length=1000)
-    Price = models.FloatField(max_length=10)
+    Price = models.DecimalField(max_length=10, default=0, decimal_places=2, max_digits=6)
     Available = models.BooleanField(null=False)
 
 
@@ -30,7 +34,7 @@ class Product(models.Model):
 class Review(models.Model):
     # All fields cannot be empty
     Review_id = models.AutoField(null=False, primary_key=True, editable=False)
-    Cust_Id = models.ForeignKey(Account.User_id, on_delete=models.CASCADE, null=False)
+    Cust_Id = models.ForeignKey(Account, on_delete=models.CASCADE, null=False)
     Cust_Name = models.CharField(null=False, max_length=40)
     Rating = models.IntegerField(null=False, editable=False)
     Details = models.TextField(null=False, editable=False)
@@ -40,23 +44,24 @@ class Review(models.Model):
 
 # Rental Orders -- Ordering System
 class RentalOrder(models.Model):
-    Package_Options = ['Standard', 'Deluxe', 'Premium', 'Platinum']
+    Package_Options = [('STDR','Standard'), ('DELX','Deluxe'), ('PREM','Premium'), ('SPEC','Platinum')]
     # Fields below cannot be empty
     Rental_Number = models.AutoField(null=False, primary_key=True, editable=False)
-    Package = models.CharField(max_length=10, choices=Package_Options, null=False)
-    Cus_id = models.ForeignKey(Account, on_delete=models.CASCADE, null=False, editable=False)
-    Location = models.CharField(null=False, max_length=50, editable=False)
+    Package = models.CharField(max_length=10, choices=Package_Options, default='N/A', null=False)
+    Cus_id = models.ForeignKey(Account, on_delete=models.CASCADE, null=False, default='N/A')
+    Location = models.CharField(null=False, max_length=50, default='N/A')
     Target_Date = models.DateField()
-    Ord_TS = models.CharField(max_length=25, null=False, editable=False)
-    Completed = models.BooleanField(null=False)
+    Ord_TS = models.CharField(max_length=25, null=False, editable=False, default='N/A')
+    Completed = models.BooleanField(null=False, default=False)
 
 
 # Order Details -- All items requested within Package Selected
 class OrderDetail(models.Model):
-    Rent_Order = models.ForeignKey(RentalOrder.Rental_Number, null=False, editable=False)
-    Primary_Flavor = models.ForeignKey(Product, on_delete=models.CASCADE, null=False)
-    Secondary_Flavor = models.ForeignKey(Product, on_delete=models.CASCADE, default = 'N/A') #to be continued
-    Items = models.ForeignKey(Product, on.delete=models.CASCADE, default = 'N/A
+#    Order_Number = models.ForeignKey(RentalOrder, on_delete=models.CASCADE, null=False, editable=False)
+#    Primary_Flavor = models.ForeignKey(Product, on_delete=models.CASCADE, null=False)
+#    Secondary_Flavor = models.ForeignKey(Product, on_delete=models.CASCADE, default = 'N/A') #to be continued
+#    Items = models.ForeignKey(Product, on_delete=models.CASCADE, default = 'N/A')
+    pass
 #--------------------------------------------------------------------------------------------
 
 
