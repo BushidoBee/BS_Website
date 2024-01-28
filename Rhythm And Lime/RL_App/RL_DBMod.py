@@ -23,22 +23,27 @@ class Product(models.Model):
     Code_type = [('Flavor', 'FLAV'), ('Consumable','CNSM'), ('Asset','ASST'), ('Advertisement','ADVT'), ('Miscellaneous','MISC')]
     # Product_id, Product_type cannot be empty
     Product_id = models.AutoField(null=False, primary_key=True, editable=False)
-    Product_Type = models.CharField(max_length=15, choices=Code_type, null=False)
+    Product_Type = models.CharField(max_length=15,choices=Code_type, null=False)
     Product_Name = models.CharField(null=False, max_length=25)
     Product_Description = models.TextField(null=False, max_length=1000)
     Price = models.DecimalField(max_length=10, default=0, decimal_places=2, max_digits=6)
     Available = models.BooleanField(null=False)
+# create foreign key to order_details, rental tables
+
+    def __str__(self):
+        return str(Product_Type) + " #" + str(self.Product_id) + ": " + str(Product_Name)
 
 
 # Rhythm & Lime Reviews -- Feedback from Customers
 class Review(models.Model):
+    Time_Signature = now() # Submitted Review Timestamp
     # All fields cannot be empty
     Review_id = models.AutoField(null=False, primary_key=True, editable=False)
     Cust_Id = models.ForeignKey(Account, on_delete=models.CASCADE, null=False)
     Cust_Name = models.CharField(null=False, max_length=40)
     Rating = models.IntegerField(null=False, editable=False)
     Details = models.TextField(null=False, editable=False)
-    RVW_TS = models.CharField(max_length=25, null=False, editable=False)
+    RVW_TS = models.CharField(max_length=25, null=False, editable=False, default=Time_Signature)
 
 
 
@@ -48,7 +53,9 @@ class RentalOrder(models.Model):
     # Fields below cannot be empty
     Rental_Number = models.AutoField(null=False, primary_key=True, editable=False)
     Package = models.CharField(max_length=10, choices=Package_Options, default='N/A', null=False)
-    Cus_id = models.ForeignKey(Account, on_delete=models.CASCADE, null=False, default='N/A')
+    Cus_id = models.ForeignKey(Account, on_delete=models.CASCADE, null=False)
+    Primary_Flavor = models.ForeignKey(Product, on_delete=models.CASCADE, null=False)
+    Secondary_Flavor = models.ForeignKey(Product, on_delete=models.CASCADE, default = 'N/A')
     Location = models.CharField(null=False, max_length=50, default='N/A')
     Target_Date = models.DateField()
     Ord_TS = models.CharField(max_length=25, null=False, editable=False, default='N/A')
@@ -57,13 +64,13 @@ class RentalOrder(models.Model):
 
 # Order Details -- All items requested within Package Selected
 class OrderDetail(models.Model):
-#    Order_Number = models.ForeignKey(RentalOrder, on_delete=models.CASCADE, null=False, editable=False)
-#    Primary_Flavor = models.ForeignKey(Product, on_delete=models.CASCADE, null=False)
-#    Secondary_Flavor = models.ForeignKey(Product, on_delete=models.CASCADE, default = 'N/A') #to be continued
+#    Order_Number = models.ForeignKey(RentalOrder, on_delete=models.CASCADE, null=False, editable=False)  #to be continued
 #    Items = models.ForeignKey(Product, on_delete=models.CASCADE, default = 'N/A')
     pass
+    
+    # make a in-line style to rentalorder Table
 #--------------------------------------------------------------------------------------------
-
+# Test Environment
 
 
 # Class CarMake w/ Name and Description Fields
