@@ -46,29 +46,35 @@ class Review(models.Model):
     RVW_TS = models.CharField(max_length=25, null=False, editable=False, default=Time_Signature)
 
 
+# Order Details -- All items requested within Package Selected
+class Cus_Order(models.Model):
+    Order_Number = models.AutoField(primary_key=True, on_delete=models.CASCADE, null=False, editable=False)  #to be continued
+    Customer = models.ForeignKey(Account, on_delete=models.CASCADE, null=False)
+
 
 # Rental Orders -- Ordering System
 class RentalOrder(models.Model):
     Package_Options = [('STDR','Standard'), ('DELX','Deluxe'), ('PREM','Premium'), ('SPEC','Platinum')]
     # Fields below cannot be empty
-    Rental_Number = models.AutoField(null=False, primary_key=True, editable=False)
-    Package = models.CharField(max_length=10, choices=Package_Options, default='N/A', null=False)
+    Rental_Num = models.AutoField(primary_key=True, on_delete=models.CASCADE, null=False, editable=False)
+    Order_Number = models.ForeignKey(Cus_Order, primary_key=True, on_delete=models.CASCADE, null=False)
     Cus_id = models.ForeignKey(Account, on_delete=models.CASCADE, null=False)
-    Primary_Flavor = models.ForeignKey(Product, on_delete=models.CASCADE, null=False)
-    Secondary_Flavor = models.ForeignKey(Product, on_delete=models.CASCADE, default = 'N/A')
+    Package = models.CharField(max_length=10, choices=Package_Options, default='N/A', null=False)
+    Primary = models.ForeignKey(Product.Product_Name, on_delete=models.CASCADE, null=False)
+    Secondary = models.ForeignKey(Product.Product_Name, on_delete=models.CASCADE, null=False)
     Location = models.CharField(null=False, max_length=50, default='N/A')
     Target_Date = models.DateField()
     Ord_TS = models.CharField(max_length=25, null=False, editable=False, default='N/A')
     Completed = models.BooleanField(null=False, default=False)
 
 
-# Order Details -- All items requested within Package Selected
-class OrderDetail(models.Model):
-#    Order_Number = models.ForeignKey(RentalOrder, on_delete=models.CASCADE, null=False, editable=False)  #to be continued
-#    Items = models.ForeignKey(Product, on_delete=models.CASCADE, default = 'N/A')
-    pass
-    
-    # make a in-line style to rentalorder Table
+# Items requested within Customer's Order
+class Items(models.Model):
+    Prod_Type = models.ForeignKey(Product.Product_Type, null=False)
+    Order_Items = models.ForeignKey(Product.Product_Name, on_delete=models.CASCADE, null=False)
+    Quantity = models.IntegerField(default=0)
+    # make a in-line style to OrderDetails Table
+
 #--------------------------------------------------------------------------------------------
 # Test Environment
 
