@@ -23,7 +23,7 @@ from . import process
 APP_NAME = 'RL_App'
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('supersecretRLDB/', admin.site.urls),
 
      # Home (Index) Page
     path(route='', view=process.homepage, name='index'),

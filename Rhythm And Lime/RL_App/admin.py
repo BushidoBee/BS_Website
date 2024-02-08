@@ -1,10 +1,10 @@
 from django.contrib import admin
-from .RL_DBMod import Product, Account, Review, RentalOrder
+from .RL_DBMod import Product, Account, Review, RentalOrder, Items
 
 # Main Database classes for viewing information
 class AccountsAdmin(admin.ModelAdmin):
-    list_display = ['User_id', 'First_Name', 'Last_Name', 'Email', 'Phone_Number', 'Password']
-    search_fields = ['User_id']
+    list_display = ['User_id', 'First_Name', 'Last_Name', 'Email', 'Phone_Number', 'Password', 'RL_Points']
+    search_fields = ['User_id', 'First_Name', 'Last_Name', 'Email', 'Phone_Number']
 
 class ProductAdmin(admin.ModelAdmin):
     list_display = ['Product_Name', 'Product_Type', 'Product_id', 'Price', 'Product_Description', 'Available']
@@ -15,8 +15,11 @@ class ReviewAdmin(admin.ModelAdmin):
     search_fields = ['Cust_Name']
 
 class RentalOrderAdmin(admin.ModelAdmin):
-    list_display = ['Package', 'Cus_id', 'Rental_Number', 'Location', 'Target_Date', 'Completed']
-    search_fields = ['Completed']
+    list_display = ['Rental_Num', 'Package', 'Cus_id', 'Location', 'Target_Date', 'Completed', 'Ord_TS']
+    search_fields = ['Package', 'Location', 'Completed']
+
+class Items(admin.StackedInline):
+     model = Product
 
 
 # Registered Database Models
