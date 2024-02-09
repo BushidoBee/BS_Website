@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .RL_DBMod import Product, Account, Review, RentalOrder, Items
+from .RL_DBMod import Product, Account, Review, RentalOrder, Items # Add new Fields into imports
 
 # Main Database classes for viewing information
 class AccountsAdmin(admin.ModelAdmin):
@@ -9,6 +9,7 @@ class AccountsAdmin(admin.ModelAdmin):
 class ProductAdmin(admin.ModelAdmin):
     list_display = ['Product_Name', 'Product_Type', 'Product_id', 'Price', 'Product_Description', 'Available']
     search_fields = ['Product_Type']
+    EXTRA = 4
 
 class ReviewAdmin(admin.ModelAdmin):
     list_display = ['Review_id', 'Cust_Name', 'Details', 'Rating', 'RVW_TS']
@@ -18,11 +19,11 @@ class RentalOrderAdmin(admin.ModelAdmin):
     list_display = ['Rental_Num', 'Package', 'Cus_id', 'Location', 'Target_Date', 'Completed', 'Ord_TS']
     search_fields = ['Package', 'Location', 'Completed']
 
-class Items(admin.StackedInline):
+class MultiProducts(admin.StackedInline):
      model = Product
 
 
-# Registered Database Models
+# Registered Database Models; Include other imported classes from RL_DBMod
 admin.site.register(Account, AccountsAdmin)
 admin.site.register(Product, ProductAdmin)
 admin.site.register(Review, ReviewAdmin)
