@@ -12,8 +12,22 @@ import json
 # Get an instance of a logger
 logger = logging.getLogger(__name__)
 
-# Basic Homepage view 
+# Basic Homepage 
 def homepage(request):
     context = {}
     if request.method == "GET":
         return render(request, 'RhythmandLime.htm', context)
+
+# User Registration 
+
+
+# Ordering Process 
+
+
+# Rental / Order Confirmation 
+
+
+# User Registration 
+
+
+# User Login / Log Out 
