@@ -1,7 +1,7 @@
 from django.shortcuts import get_object_or_404, render, redirect
 from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib.auth.models import User
-from .RL_DBMod import Account, Product, Review, RentalOrder
+from .RL_DBMod import Account, Flavoring, Product, ItemOrder, RentalBook, Review
 
 from django.contrib.auth import login, logout, authenticate
 from django.contrib import messages

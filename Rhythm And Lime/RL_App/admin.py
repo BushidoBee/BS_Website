@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .RL_DBMod import Product, Account, Review, RentalOrder, Items # Add new Fields into imports
+from .RL_DBMod import Account, Flavoring, Product, ItemOrder, RentalBook, Review
 
 # Main Database classes for viewing information
 class AccountsAdmin(admin.ModelAdmin):
@@ -11,13 +11,21 @@ class ProductAdmin(admin.ModelAdmin):
     search_fields = ['Product_Type']
     EXTRA = 4
 
+class RL_ColorsAdmin(admin.ModelAdmin):
+    list_display = ['Product_Name', 'Product_Description', 'Image', 'Available']
+    search_fields = ['Product_Name', 'Available']
+
+class RequestOrders(admin.ModelAdmin):
+    list_display = ['Rental_Num', 'Customer', 'Primary', 'Secondary', 'Cups', 'Rimmer_Paks', 'Salt_Paks']
+    search_fields = ['Rental_Num']
+
+class RentalOrderAdmin(admin.ModelAdmin):
+    list_display = ['Rental_Request', 'Package', 'Flavor', 'Location', 'Target_Date', 'Total', 'Completed', 'Ord_TS']
+    search_fields = ['Rental_Request', 'Package', 'Location', 'Completed', 'Total', 'Ord_TS']
+
 class ReviewAdmin(admin.ModelAdmin):
     list_display = ['Review_id', 'Cust_Name', 'Details', 'Rating', 'RVW_TS']
     search_fields = ['Cust_Name']
-
-class RentalOrderAdmin(admin.ModelAdmin):
-    list_display = ['Rental_Num', 'Package', 'Cus_id', 'Location', 'Target_Date', 'Completed', 'Ord_TS']
-    search_fields = ['Package', 'Location', 'Completed']
 
 class MultiProducts(admin.StackedInline):
      model = Product
@@ -26,8 +34,10 @@ class MultiProducts(admin.StackedInline):
 # Registered Database Models; Include other imported classes from RL_DBMod
 admin.site.register(Account, AccountsAdmin)
 admin.site.register(Product, ProductAdmin)
+admin.site.register(Flavoring, RL_ColorsAdmin)
+admin.site.register(ItemOrder, RequestOrders)
+admin.site.register(RentalBook, RentalOrderAdmin)
 admin.site.register(Review, ReviewAdmin)
-admin.site.register(RentalOrder, RentalOrderAdmin)
 
 #----------------------------------------------------------------------------------------------
 # References 
