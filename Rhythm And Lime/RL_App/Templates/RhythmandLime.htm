@@ -14,15 +14,16 @@
     <link rel="icon" sizes="192x192" href="../RL_Images/RL_Logo.png" type="image/jpeg"/>
     <link rel="shortcut icon" href="../RL_Images/RL_Logo.png" type="image/jpeg"/>
     <link rel="apple-touch-icon" href="../RL_Images/RL_LenLimeman.png" type="image/jpeg"/>
-    <link rel="stylesheet" href="../RL_Styles/RhyLi_BasicStyles.css">
+    <link rel="stylesheet" href="Rhythm And Lime\RL_App\RL_Styles\RhyLi_BasicStyles.css">
 </head>
-    <body>
+<body>
+    {% load static %}
     <h1><span>Welcome to Rhythm & Lime Margarita Rentals!</span></h1>
     <nav>
     <div class="dropdown"> <!--Drop Down menu; integrate into here!-->
         <button onclick="myFunction()" class="dropbtn">Dropdown</button>
         <div id="myDropdown" class="dropdown-content">
-            <a href="RhythmandLime.htm">Home Page</a>
+            <a href="{% url 'index' %}">Home Page</a>
             <a href="AboutR&L.htm">About R&L</a>
             <a href="RL_Booking.htm">Book Now!</a>
             <a href="Contact.htm">Contact Us</a>
