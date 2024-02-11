@@ -25,7 +25,7 @@ class Account(models.Model):
 class Flavoring(models.Model):
     Product_Name = models.CharField(primary_key=True, max_length=25)
     Product_Description = models.TextField(null=False, max_length=400)
-    Image = models.ImageField(upload_to="RL_Images/", max_length=100) #Further Edit this Field before Migration 
+    Image = models.ImageField(upload_to="RL_Styles/Graphics/RL_Images/", max_length=100) #Further Edit this Field before Migration 
     Available = models.BooleanField(default=True, null=False)
 
     def __str__(self):

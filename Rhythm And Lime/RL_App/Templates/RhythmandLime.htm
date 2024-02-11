@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+{% load static %}
 <head>
     <meta charset="UTF-8">
     <title>Feelin' the Rhythm!</title>
@@ -14,10 +15,9 @@
     <link rel="icon" sizes="192x192" href="../RL_Images/RL_Logo.png" type="image/jpeg"/>
     <link rel="shortcut icon" href="../RL_Images/RL_Logo.png" type="image/jpeg"/>
     <link rel="apple-touch-icon" href="../RL_Images/RL_LenLimeman.png" type="image/jpeg"/>
-    <link rel="stylesheet" href="Rhythm And Lime\RL_App\RL_Styles\RhyLi_BasicStyles.css">
+    <link rel="stylesheet" href="{% static 'RL_Logo.png' %}">
 </head>
 <body>
-    {% load static %}
     <h1><span>Welcome to Rhythm & Lime Margarita Rentals!</span></h1>
     <nav>
     <div class="dropdown"> <!--Drop Down menu; integrate into here!-->
