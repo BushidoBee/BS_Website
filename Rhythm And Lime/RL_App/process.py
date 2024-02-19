@@ -18,16 +18,50 @@ def homepage(request):
     if request.method == "GET":
         return render(request, 'RhythmandLime.htm', context)
 
-# User Registration 
 
+# User Registration 
+def known_regUser(request):
+    # Add code here
+    details = {}
+    details["warn_msg"] = "User is already register, please login with known credentials"
+    
+        return render(request, 'login.htm', details)
+        
+def registerUser(request):
+    # Add code here
+    details = {}
+
+    
+        return redirect(request, 'Registration.htm', details) # Template not created yet
+
+# Login / Log Out View
+def FUNCTNAME(request):
+    # Add code here
+    
+        return render(request, 'login.htm', details)
 
 # Ordering Process 
+def FUNCTNAME(request):
+    # Add code here
+    details = {}
+
+    
+        return redirect(request, 'Orderpage.htm', details) # Template not created yet
 
 
 # Rental / Order Confirmation 
+def FUNCTNAME(request):
+    # Add code here
+    details = {}
+
+    
+        return redirect(request, '???.htm', details)
 
 
 # User Registration 
+def FUNCTNAME(request):
+    # Add code here
+    details = {}
 
-
-# User Login / Log Out 
+    
+        return redirect(request, '???.htm', details)
