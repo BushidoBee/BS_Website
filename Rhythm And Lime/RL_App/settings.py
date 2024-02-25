@@ -113,15 +113,15 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
-STATIC_URL = 'RL_App\RL_Styles' # Set a Directory to copy static files to
+STATIC_URL = 'static/' # Set a Directory to copy static files to
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, ""),
-    os.path.join(BASE_DIR, STATIC_URL)
+    os.path.join(BASE_DIR, "RL_App\RL_Styles"),
 ]
 
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, MEDIA_URL) # Create the Media Directory
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+MEDIA_ROOT = os.path.join(STATIC_ROOT, 'RL_Styles') # Create the Media Directory
+MEDIA_URL = '/RL_Styles/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field

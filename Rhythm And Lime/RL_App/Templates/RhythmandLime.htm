@@ -3,34 +3,53 @@
 {% load static %}
 <head>
     <meta charset="UTF-8">
-    <title>Feelin' the Rhythm!</title>
-    <!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <title>Rhythm & Lime</title>
+    <!--
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <link href="https://unpkg.com/bootstrap-table@1.18.2/dist/bootstrap-table.min.css" rel="stylesheet">
     <script src="https://unpkg.com/bootstrap-table@1.18.2/dist/bootstrap-table.min.js"></script>
     <script src="https://unpkg.com/bootstrap-table@1.18.2/dist/extensions/filter-control/bootstrap-table-filter-control.min.js"></script>
-    <link rel="icon" type="image/png" href="RL_Images/Test_image.jfif"/>-->
-    <link rel="icon" sizes="192x192" href="../RL_Images/RL_Logo.png" type="image/jpeg"/>
-    <link rel="shortcut icon" href="../RL_Images/RL_Logo.png" type="image/jpeg"/>
-    <link rel="apple-touch-icon" href="../RL_Images/RL_LenLimeman.png" type="image/jpeg"/>
-    <link rel="icon" href="{% static 'RL_Logo.png' %}">
+    -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'RhyLi_BasicStyles.css' %}">
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"/>
+    <link rel="icon" href="{% static 'Graphics/RL_Images/RL_LenLimeman.png' %}">
+    <link rel="shortcut icon" href="{% static 'Graphics/RL_Images/RL_LenLimeman.png' %}" type="image/jpeg"/>
+    <link rel="apple-touch-icon" href="{% static 'Graphics/RL_Images/RL_Logo.png' %}" type="image/jpeg"/>
 </head>
 <body>
-    <h1><span>Welcome to Rhythm & Lime Margarita Rentals!</span></h1>
     <nav>
-    <div class="dropdown"> <!--Drop Down menu; integrate into here!-->
-        <button onclick="myFunction()" class="dropbtn">Dropdown</button>
-        <div id="myDropdown" class="dropdown-content">
-            <a href="{% url 'index' %}">Home Page</a>
-            <a href="AboutR&L.htm">About R&L</a>
-            <a href="RL_Booking.htm">Book Now!</a>
-            <a href="Contact.htm">Contact Us</a>
-            <a href="#">FAQs</a>
-        </div>
+        <img src="{% static 'Graphics/RL_Images/RL_Logo.png' %}" width="70"></button><span>Rhythm & Lime Margaritas</span>
+        <div id="MainDrdw"> <!--Drop Down menu; integrate into here!-->
+            <img onclick="MainDrDwReveal()" src="{% static 'Graphics/DropDownMain.png' %}" width="45">
+            <div class="Navigation">
+                <a href="{% url 'Homepage' %}">Home Page</a>
+                <a href="AboutR&L.htm">About R&L</a>
+                <a href="RL_Booking.htm">Book Now!</a>
+                <a href="Contact.htm">Contact Us</a>
+                <a href="#">FAQs</a>
+            {% if user.is_authenticated %}
+                <a class="btn btn-link" href="#">{{user.first_name}}({{user.username}})</a>
+                <a class="btn btn-link" href="{% url 'Logout' %}">Logout</a>
+            {% else %}
+                <form class="form-inline" action="{% url 'Login' %}" method="post">
+                    {% csrf_token %}
+                    <div class="input-group">
+                        <input type="email" class="form-control" placeholder="Email" name="username">
+                        <input type="password" class="form-control" placeholder="Password" name="psw">
+                        <button class="btn btn-primary" type="submit">Login</button>
+                        <a class="btn btn-link" href="{% url 'NewAccount' %}">Register Here</a>
+                    </div>
+                </form>
+            {% endif %}
+            </div>
       </div>
     </nav>
+
+
     <div class = "Primary">
         <p>This is the place to find your best deals to get the party going, and going, and going, and going, and going</p>
     </div>
@@ -52,6 +71,12 @@
     </div>
 
     <script>
+        function MainDrDwReveal() {
+        var pizzaName = "Margarita";
+        // Code here can use pizzaName
+        }
+        // Code here can't use pizzaName
+
         $(function() {
           $('#table').bootstrapTable()
         })

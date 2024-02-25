@@ -19,6 +19,22 @@ def homepage(request):
         return render(request, 'RhythmandLime.htm', context)
 
 
+# Login / Log Out View
+def login_logout(request):
+    context = {}
+    if request.method == "POST":
+        user = request.POST['username']
+        password = request.POST['psw']
+        logon_user = authenticate(username=user, password=password)
+        if logon_user is not None:
+            login(request, logon_user)
+            return redirect('Homepage')
+        else:
+            context['message'] = "Invalid username or password, please try again."
+            return render(request, 'Templates\login.htm', context)
+    else:
+        return render(request, 'djangoapp/index.html', context)
+
 
 # User Registration 
 def known_regUser(request):
@@ -26,19 +42,16 @@ def known_regUser(request):
     details = {}
     details["warn_msg"] = "User is already registered, please login with known credentials"
     
-        return render(request, 'login.htm', details)
-        
+    return render(request, 'login.htm', details)
+
+
 def registerUser(request):
     # Add code here
     details = {}
 
-        return redirect(request, 'Registration.htm', details) # Template not created yet
+    return redirect(request, 'Registration.htm', details) # Template not created yet
 
-# Login / Log Out View
-def FUNCTNAME(request):
-    # Add code here
-    
-        return render(request, 'login.htm', details)
+
 
 
 
@@ -48,7 +61,7 @@ def FUNCTNAME(request):
     details = {}
 
     
-        return redirect(request, 'Orderpage.htm', details) # Template not created yet
+    return redirect(request, 'RL_Booking.htm.htm', details) # Template not created yet
 
 
 
@@ -58,7 +71,7 @@ def FUNCTNAME(request):
     details = {}
 
     
-        return redirect(request, '???.htm', details) # Template not created yet
+    return redirect(request, '???.htm', details) # Template not created yet
 
 
 
@@ -68,4 +81,4 @@ def FUNCTNAME(request):
     details = {}
 
     
-        return redirect(request, '???.htm', details) # Template not created yet
+    return redirect(request, '???.htm', details) # Template not created yet

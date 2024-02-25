@@ -1,11 +1,10 @@
 """
 URL configuration for RL_App project.
 
-The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/5.0/topics/http/urls/
+The `urlpatterns` list routes URLs to views. For more information please see: https://docs.djangoproject.com/en/5.0/topics/http/urls/
 Examples:
 Function views
-    1. Add an import:  from my_app import views
+    1. Add a "Views" import
     2. Add a URL to urlpatterns:  path('', views.home, name='home')
 Class-based views
     1. Add an import:  from other_app.views import Home
@@ -26,7 +25,14 @@ urlpatterns = [
     path('supersecretRLDB/', admin.site.urls),
 
      # Home (Index) Page
-    path(route='', view=process.homepage, name='index'),
+    path(route='', view=process.homepage, name='Homepage'),
+
+    # path for Login/Log-Out
+    path(route='Sign-in', view=process.login_logout, name='Login'),
+    path(route='Logout', view=process.login_logout, name='Logout'),
+
+    # Account Creation view
+    path(route='new-user', view=process.registerUser, name='NewAccount'),
 
     # About Us; Contact Information
     # path(route='...', view=process.contact, name='About'),
@@ -37,12 +43,6 @@ urlpatterns = [
     # Submit Orders/Rentals
     # path(route='...', view=process.submit_rental, name='Rentals'),
 
-    # Account Creation view
-    # path(route='...', view=process.accounts, name='Accounts'),
-
     # Social Media view
     # path(route='...', view=process.socmedia, name='Social'),
-
-    # path for Login/Log-Out
-    # path(route='login_logout', view=process.login_logout, name='logout'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
