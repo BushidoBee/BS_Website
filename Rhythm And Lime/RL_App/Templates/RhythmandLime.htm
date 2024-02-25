@@ -16,14 +16,14 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="{% static 'RhyLi_BasicStyles.css' %}">
     <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"/>
+
     <link rel="icon" href="{% static 'Graphics/RL_Images/RL_LenLimeman.png' %}">
     <link rel="shortcut icon" href="{% static 'Graphics/RL_Images/RL_LenLimeman.png' %}" type="image/jpeg"/>
     <link rel="apple-touch-icon" href="{% static 'Graphics/RL_Images/RL_Logo.png' %}" type="image/jpeg"/>
 </head>
-<body>
-    <nav>
-        <img src="{% static 'Graphics/RL_Images/RL_Logo.png' %}" width="70"></button><span>Rhythm & Lime Margaritas</span>
-        <div id="MainDrdw"> <!--Drop Down menu; integrate into here!-->
+<header>
+    <div id="MainDrdw"> <!--Drop Down menu; integrate into here!-->
+        <img src="{% static 'Graphics/RL_Images/RL_Logo.png' %}" width="70"><span>Rhythm & Lime Margaritas</span>
             <img onclick="MainDrDwReveal()" src="{% static 'Graphics/DropDownMain.png' %}" width="45">
             <div class="Navigation">
                 <a href="{% url 'Homepage' %}">Home Page</a>
@@ -46,11 +46,13 @@
                 </form>
             {% endif %}
             </div>
-      </div>
+    </div>
+</header>
+<body>
+    <nav>
+        
     </nav>
-
-
-    <div class = "Primary">
+    <div class = "">
         <p>This is the place to find your best deals to get the party going, and going, and going, and going, and going</p>
     </div>
     <div class = "Secondary">
@@ -71,17 +73,8 @@
     </div>
 
     <script>
-        function MainDrDwReveal() {
-        var pizzaName = "Margarita";
-        // Code here can use pizzaName
-        }
-        // Code here can't use pizzaName
-
-        $(function() {
-          $('#table').bootstrapTable()
-        })
-      </script>
+        ...
+    </script>
 
     </body>
-
 </html>
