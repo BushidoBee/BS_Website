@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+  <meta charset="UTF-8">
+  <title>Rhythm & Lime</title>
+  <!--
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <link href="https://unpkg.com/bootstrap-table@1.18.2/dist/bootstrap-table.min.css" rel="stylesheet">
+  <script src="https://unpkg.com/bootstrap-table@1.18.2/dist/bootstrap-table.min.js"></script>
+  <script src="https://unpkg.com/bootstrap-table@1.18.2/dist/extensions/filter-control/bootstrap-table-filter-control.min.js"></script>
+  -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="{% static 'RhyLi_BasicStyles.css' %}">
+  <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"/>
+
+  <link rel="icon" href="{% static 'Graphics/RL_Images/RL_LenLimeman.png' %}">
+  <link rel="shortcut icon" href="{% static 'Graphics/RL_Images/RL_LenLimeman.png' %}" type="image/jpeg"/>
+  <link rel="apple-touch-icon" href="{% static 'Graphics/RL_Images/RL_Logo.png' %}" type="image/jpeg"/>
+</head>
+  <h1><span><u>Rhythm & Lime Margarita Rentals</u></span></h1>
+  <nav>
+    <a href="{% url 'Homepage' %}">Home Page</a>
+    <a href="#">About R&L</a>
+    <a href="RL_Booking.htm">Book Now!</a>
+    <a href="#">Contact Us</a>
+    <a href="#">FAQs</a>
+  </nav>
+  <div class="FormBake">
+    <form action="R&L_Booking.php" method="POST">
+      <label for="Rentals"><strong>Rent Package: </strong></label>
+      <input list="Rent_pack" id="Rentals" name="Rent_pack"/>
+      <datalist id="Rent_pack">
+        <option value="Standard">
+        <option value="Funky Lime (Deluxe)">
+        <option value="R&L Special (Premium)">
+      </datalist></br></br>
+      <label for="name">Name:</label>
+      <input type="text" name="name" id="name"></br></br>
+      <label for="location">Address:</label>
+      <input type="text" name="location" id="location"></br></br>
+      <label for="phone">Phone:</label>
+      <input type="text" name="phone" id="phone"></br></br>
+      <input type="submit" value="Submit Rental!">
+    </form>
+  </div>
+
+  <div class = "Tertiary">
+    <span>Rhythm & Lime Inc. | Est. 2024 | Keepin' it Funky!</span>
+  </div>
+
+</body>
+  <script>
+  function ConfirmOrder(){
+  var orders = {}; 
+
+
+if($('.food').length>0){
+  var checkbox = 0;
+
+  $('tr.item').each(function()
+  {
+    var order_id = $(this).attr('id');
+    var quantity1 = $(this).find('.quantity').text();
+    var name = $('#name').val();
+
+    orders[order_id] = quantity1;
+
+    })
+
+  console.log(orders);
+
+
+    if ($('#senior-checkbox').prop('checked')) {
+      checkbox = 1;
+    }
+    else
+  {
+      checkbox = 0;
+    }
+  }
+
+else
+  {
+  alert("No orders taken");
+}
+  $.ajax({
+    url: "confirm_order.php",
+    type: "POST",
+    async: true,
+    cache: false,
+    data: {orders:orders,checkbox:checkbox,name},
+    success: function(html){
+    }
+  })}
+  </script>
+</html>

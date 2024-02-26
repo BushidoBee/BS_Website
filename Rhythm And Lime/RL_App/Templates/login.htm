@@ -33,5 +33,20 @@
                 </tr>
             </table>
         </form>
+
+        {% if user.is_authenticated %}
+            <a class="btn btn-link" href="#">{{user.first_name}}({{user.username}})</a>
+            <a class="btn btn-link" href="{% url 'Logout' %}">Logout</a>
+        {% else %}
+            <form class="form-inline" action="{% url 'Login' %}" method="post">
+                {% csrf_token %}
+                <div class="input-group">
+                    <input type="email" class="form-control" placeholder="Email" name="username">
+                    <input type="password" class="form-control" placeholder="Password" name="psw">
+                    <button class="btn btn-primary" type="submit">Login</button>
+                    <a class="btn btn-link" href="{% url 'NewAccount' %}">Register Here</a>
+                </div>
+            </form>
+        {% endif %}
 </body>
 </html>

@@ -1,10 +1,90 @@
 body {
     margin: auto;
+    min-height: 100vh;
     background: #5ECCD2 none no-repeat fixed 50% 50%;
     background: -moz-radial-gradient(center, #20a6ad 0%, #C6D747 51%, #29C042 100%);
     background: -webkit-radial-gradient(center, #20a6ad 0%, #C6D747 51%, #29C042 100%);
     background: radial-gradient(ellipse at center, #20a6ad 0%, #C6D747 51%, #29C042 100%);
 }
+
+nav ul {
+    width: 100%; list-style: none; display: flex;
+    justify-content: flex-end; align-items: center;}
+nav li {
+    height: 100%;}
+nav a {
+    height: 100%; padding: 10px 20px; display: flex;
+    text-decoration: none; align-items: center;
+    color:rgb(255, 255, 255)}
+nav a:hover {
+    background-color:rgb(66, 99, 33); color:rgb(197, 233, 203);
+    text-decoration: none;}
+nav li:first-child {
+    margin-right: auto;}
+nav {
+    background-color: rgb(73, 159, 39);
+    box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.444);
+    align-items: center;
+}
+
+
+.MainMenu {
+    background-color: rgb(1, 202, 108);
+    display: grid;
+    justify-items: start;
+}
+
+.mainicon {
+    display: block; padding: 4px 0px;
+    width: 75px;
+}
+
+
+.MainDrdw {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 250px;
+    z-index: 999;
+    background-color: rgb(43, 99, 3);
+    backdrop-filter: blur(20px);
+    box-shadow: -10px 0 10px rgba(190, 190, 190, 0.429);
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+.MainDrdw li {width: 100%;}
+.MainDrdw a {width: 100%;}
+
+/*.menu-button {display: none;}*/
+.menu-button_second a:hover {background-color: rgb(73, 159, 39);}
+
+.Navigation {
+    background-color: rgb(19, 91, 4);
+    color: #ffffff;
+    justify-self: end;
+}
+
+
+@media (max-width: 800px)
+{.hideMobile {display: none;}
+.menu-button {display: none;}}
+
+@media (max-width: 400px)
+{.MainDrdw {width: 100%;}}
+
+
+
+footer {
+
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
 
 /* h1 {
     font-family: AR Christy, Kozuka Gothic Pr6N, Cooper std;
@@ -141,39 +221,3 @@ p {
     -webkit-box-shadow: 0px 10px 13px -7px #000000, 5px 5px 1px 0px rgba(0,0,0,0.33);
     box-shadow: 0px 10px 13px -7px #000000, 5px 5px 1px 0px rgba(0,0,0,0.33);
 }*/
-
-
-
-#MainDrdw {
-    background-color: rgb(1, 202, 108);
-    display: grid;
-    justify-items: start;
-}
-
-#MainDrdw.Navigation {
-    background-color: rgb(19, 91, 4);
-    color: #ffffff;
-    justify-self: end;
-}
-
-
-nav {
-    background-color: rgb(51, 82, 10);
-    /* margin: 5px 5px;
-    font-size: large;
-    display: flex;
-    text-align:center;ks
-    padding: 10px 0.5%;
-    border: #1BD29B; border-style:inset; border-radius: 23px 23px 0px 0px;
-    -webkit-box-shadow: 0px 10px 13px -7px #000000, 0px 1px 10px 10px rgba(0,0,0,0.33);
-    box-shadow: 0px 10px 13px -7px #000000, 0px 1px 10px 10px rgba(0,0,0,0.33); */
-}
-
-
-footer {
-
-}
-
-html {
-    scroll-behavior: smooth;
-}

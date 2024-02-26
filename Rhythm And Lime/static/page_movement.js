@@ -1,9 +1,8 @@
 function MainDrDwReveal() {
-    var pizzaName = "Margarita";
-    // Code here can use pizzaName
+    const sidebar = document.querySelector('.MainDrdw');
+    sidebar.style.display = 'flex'
     }
-    // Code here can't use pizzaName
-
-    $(function() {
-      $('#table').bootstrapTable()
-    })
+function MainDrDwHide() {
+    const sidebar = document.querySelector('.MainDrdw');
+    sidebar.style.display = 'none'
+    }

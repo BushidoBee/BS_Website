@@ -42,14 +42,14 @@ def known_regUser(request):
     details = {}
     details["warn_msg"] = "User is already registered, please login with known credentials"
     
-    return render(request, 'login.htm', details)
+    return redirect(request, 'login.htm', details)
 
 
 def registerUser(request):
     # Add code here
     details = {}
 
-    return redirect(request, 'Registration.htm', details) # Template not created yet
+    return render(request, 'Registration.htm', details) # Template not created yet
 
 
 
