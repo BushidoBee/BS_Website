@@ -1,11 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us</title>
+{% load static %}
+<head> <!--Head / Metadata Inserts-->
+        <meta charset="UTF-8">
+        <title>Rhythm & Lime</title>
+        <!--
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+        <link href="https://unpkg.com/bootstrap-table@1.18.2/dist/bootstrap-table.min.css" rel="stylesheet">
+        <script src="https://unpkg.com/bootstrap-table@1.18.2/dist/bootstrap-table.min.js"></script>
+        <script src="https://unpkg.com/bootstrap-table@1.18.2/dist/extensions/filter-control/bootstrap-table-filter-control.min.js"></script>
+        -->
+    
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="{% static 'RhyLi_BasicStyles.css' %}">
+        <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"/>
+        <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0;">
+        <link rel="icon" href="{% static 'Graphics/RL_Images/RL_LenLimeman.png' %}">
+        <link rel="shortcut icon" href="{% static 'Graphics/RL_Images/RL_LenLimeman.png' %}" type="image/jpeg"/>
+        <link rel="apple-touch-icon" href="{% static 'Graphics/RL_Images/RL_Logo.png' %}" type="image/jpeg"/>
 </head>
 <body>
+    <div> <!--Main Navigation Area-->
+        <nav>
+            <ul class = "MainDrdw">
+                <li onclick=MainDrDwHide()><a href="{% url 'Homepage' %}">Home Page</a></li>
+                <li onclick=MainDrDwHide()><a href="{% url 'Ordering' %}">Book With Us!</a></li>
+                <li onclick=MainDrDwHide()><a href="{% url 'Login' %}">Log in / Register</a></li>
+                <li onclick=MainDrDwHide()><a href="#">Close</a></li>
+            </ul>
+            <ul>
+                <li><img class = "mainicon" src="{% static 'Graphics/RL_Images/RL_Logo.png' %}"></li>
+                <li class = "hideMobile"><a href="{% url 'Homepage' %}">Home</a></li>
+                <li class = "hideMobile"><a href="{% url 'About' %}">FAQs</a></li>
+                <li class = "menu-button_second" onclick=MainDrDwReveal()><a href="#"><img src="{% static 'Graphics/DropDownMain.png' %}" width="50"></a></li>
+            </ul>
+        </nav>
+    </div>
+    <div>
+
+        <!--Add new content here-->
+    
+    </div>
+
+    <script src="{% static 'page_movement.js' %}"></script>
     
 </body>
 </html>

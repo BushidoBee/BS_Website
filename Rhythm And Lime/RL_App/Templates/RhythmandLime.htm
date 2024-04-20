@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 {% load static %}
-<head>
+<head> <!--Head / Metadata Inserts-->
     <meta charset="UTF-8">
     <title>Rhythm & Lime</title>
     <!--
@@ -23,25 +23,23 @@
     <link rel="apple-touch-icon" href="{% static 'Graphics/RL_Images/RL_Logo.png' %}" type="image/jpeg"/>
 </head>
 <body>
-    <div>
+    <div> <!--Main Navigation Area-->
         <nav>
             <ul class = "MainDrdw">
-                <li><a href="#">Log in / Register</a></li>
-                <li><a href="{% url 'Homepage' %}">Home </a></li>
-                <li><a href="#">Book With Us!</a></li>
-                <li onclick=MainDrDwHide()><a href="#">Close Menu</a></li>
+                <li onclick=MainDrDwHide()><a href="{% url 'Homepage' %}">Home Page</a></li>
+                <li onclick=MainDrDwHide()><a href="{% url 'Ordering' %}">Book With Us!</a></li>
+                <li onclick=MainDrDwHide()><a href="{% url 'Login' %}">Log in / Register</a></li>
+                <li onclick=MainDrDwHide()><a href="#">Close</a></li>
             </ul>
             <ul>
                 <li><img class = "mainicon" src="{% static 'Graphics/RL_Images/RL_Logo.png' %}"></li>
                 <li class = "hideMobile"><a href="{% url 'Homepage' %}">Home</a></li>
-                <li class = "hideMobile"><a href="#">About Rhythm & Lime</a></li>
-                <li class = "hideMobile"><a href="#">Contact Us</a></li>
-                <li class = "hideMobile"><a href="#">FAQs</a></li>
+                <li class = "hideMobile"><a href="{% url 'About' %}">FAQs</a></li>
                 <li class = "menu-button_second" onclick=MainDrDwReveal()><a href="#"><img src="{% static 'Graphics/DropDownMain.png' %}" width="50"></a></li>
             </ul>
         </nav>
     </div>
-<!-- Add all Website Content below this div Element-->
+
     <div class = "">
         <p>This is the place to find your best deals to get the party going, and going, and going, and going, and going</p>
     </div>
@@ -57,21 +55,47 @@
     <div class = "Primary">
         <p>Second text box</p>
     </div>
+    <div>
+
+        <!--Add new content here-->
+    
+    </div>
     <div class = "Tertiary">
         <span>Rhythm & Lime Inc. | Est. 2024 | Keepin' it Funky!</span>
 
     </div>
 
      <script src="{% static 'page_movement.js' %}"></script>
-    <!--<script type="text/javascript"> 
-        function MainDrDwReveal() {
-            const sidebar = document.querySelector('.MainDrdw');
-            sidebar.style.display = 'flex'}
+    
+<!--Extra Bits from Sites; Drop here:
+form Group:
+<form  id="form" method="post" action="None.php" >
 
-        function MainDrDwHide() {
-            const sidebar = document.querySelector('.MainDrdw');
-            sidebar.style.display = 'none'}
-    </script>-->
-
-    </body>
+        <div class="form-group form-group-xs">
+            <input id="name"  title="name" type="text" name="name" label="Name"  placeholder="Your Name*" value="" class="form-control inputText" required="required">
+            <p id="errorName" class="text-danger"></p>
+        </div>
+        <div class="form-group form-group-xs">
+            <input id="email" type="text" title="email" name="email" placeholder="Your Email*" value="" class="form-control email inputText" required="required">
+            <p id="errorMessage" class="text-danger"></p>
+        </div>
+            <div class="form-group form-group-xs">
+                <input id="phone" type="text" name="phone" placeholder="Your Phone*" value="" class="form-control" required="required">
+                <p id="errorphone" class="text-danger"></p>
+            </div>
+        <div class="form-group form-group-xs">
+            <textarea id="comments" title="message" name="message" placeholder="Your Message" value="" style="height:120px;" class="form-control" required="required"></textarea>
+        </div>
+        
+            
+        <div class="g-recaptcha" data-sitekey="6LfUhFApAAAAAIcAkqe4zBwQuRqnVtQjRvFlHoFy" data-action="LOGIN"></div>
+            
+        
+        <div class="offset-top-12 text-center text-sm-left">
+            <p id="errorMessage"></p>
+            <button type="submit" name="send_contact_form" class="btn btn-width-110 btn-primary">SEND MESSAGE</button>
+            <input type="hidden" name="subject" value="Request for Information">
+        </div>
+        </form>-->
+</body>
 </html>

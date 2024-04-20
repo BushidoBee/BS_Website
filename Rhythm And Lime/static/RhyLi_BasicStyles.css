@@ -1,9 +1,10 @@
 body {
     margin: auto;
+    min-height: 100vh;
     background: #5ECCD2 none no-repeat fixed 50% 50%;
-    background: -moz-radial-gradient(center, #20a6ad 0%, #C6D747 51%, #29C042 100%);
-    background: -webkit-radial-gradient(center, #20a6ad 0%, #C6D747 51%, #29C042 100%);
-    background: radial-gradient(ellipse at center, #20a6ad 0%, #C6D747 51%, #29C042 100%);
+    background: -moz-radial-gradient(center, #0dfbd7 0%, #C6D747 42%, #29C042 100%);
+    background: -webkit-radial-gradient(center, #0dfbd7 0%, #C6D747 42%, #29C042 100%);
+    background: radial-gradient(ellipse at center, #0dfbd7 0%, #C6D747 42%, #29C042 100%);
 }
 
 nav ul {
@@ -12,7 +13,7 @@ nav ul {
 nav li {
     height: 100%;}
 nav a {
-    height: 100%; padding: 0 20px; display: flex;
+    height: 100%; padding: 10px 20px; display: flex;
     text-decoration: none; align-items: center;
     color:rgb(255, 255, 255)}
 nav a:hover {
@@ -21,8 +22,9 @@ nav a:hover {
 nav li:first-child {
     margin-right: auto;}
 nav {
-    background-color: rgb(73, 159, 39);
-    box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.1)
+    background-color: rgb(73, 159, 39); font-size:20px;
+    box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.444);
+    align-items: center;
 }
 
 
@@ -32,24 +34,39 @@ nav {
     justify-items: start;
 }
 
+.mainicon {
+    display: block; padding: 4px 0px;
+    width: 75px; 
+    -webkit-border-radius: 22px;
+    -moz-border-radius: 22px;
+    border-radius: 22px;
+}
+
 
 .MainDrdw {
-    position: fixed;
-    top: 0;
-    right: 0;
-    height: 100vh;
-    width: 250px;
-    z-index: 999;
-    background-color: rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(10px);
-    box-shadow: -10px 0 10px rgba(0, 0, 0, 0.1);
+    background-color: rgb(43, 99, 3); font-size:22px; 
+    box-shadow: -10px 0 10px rgba(190, 190, 190, 0.429);
+    position: fixed; top: 0; right: 0;
+    height: 100vh; width: 250px; z-index: 999;
+    backdrop-filter: blur(20px);
+    
     display: none;
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
 }
+.MainDrdw-Hidden {
+    background-color: rgb(43, 99, 3); font-size:22px; 
+    box-shadow: -10px 0 10px rgba(190, 190, 190, 0.429);
+    position: fixed; top: 0; right: 0;
+    height: 100vh; width: 250px; z-index: 999;
+    backdrop-filter: blur(20px);
+}
 .MainDrdw li {width: 100%;}
 .MainDrdw a {width: 100%;}
+
+.menu-button {display: none;}
+/*.menu-button_second a:hover {background-color: rgb(73, 159, 39);}*/
 
 .Navigation {
     background-color: rgb(19, 91, 4);
@@ -57,23 +74,24 @@ nav {
     justify-self: end;
 }
 
-.menu-button{display: none}
 
 @media (max-width: 800px)
-{.hideMobile{display: none}
-.menu-button{display: none}}
+{.hideMobile {display: none;}
+.menu-button {display: none;}}
 
 @media (max-width: 400px)
-{.MainDrdw{width: 100%}}
+{.MainDrdw {width: 100%;}}
 
-
+@keyframes mainbarslide { 100% {transform: translate(-50px, 0px)}}
 
 footer {
 
 }
 
+
 html {
-    scroll-behavior: smooth;
+    line-height: 1.15; /* 1 */
+    -webkit-text-size-adjust: 100%; /* 2 */
 }
 
 

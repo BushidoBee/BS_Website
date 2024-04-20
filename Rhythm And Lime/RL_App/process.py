@@ -33,7 +33,7 @@ def login_logout(request):
             context['message'] = "Invalid username or password, please try again."
             return render(request, 'Templates\login.htm', context)
     else:
-        return render(request, 'djangoapp/index.html', context)
+        return render(request, 'login.htm', context)
 
 
 # User Registration 
@@ -49,9 +49,31 @@ def registerUser(request):
     # Add code here
     details = {}
 
-    return render(request, 'Registration.htm', details) # Template not created yet
+    # Template not created yet
+    return render(request, 'Registration.htm', details)
 
 
+# About Us / Contact Page
+def contact(request):
+    # Add code here
+    details = {}
+
+     # Template not created yet
+    return render(request, 'Contact.htm', details)
+
+
+def order_rental(request):
+    # Add code here
+    details = {}
+
+    
+    return render(request, 'RL_Booking.htm', details) # Template not created yet
+
+
+
+
+
+# ------------------------------------------------------------------------------------------
 
 
 
@@ -61,7 +83,7 @@ def FUNCTNAME(request):
     details = {}
 
     
-    return redirect(request, 'RL_Booking.htm.htm', details) # Template not created yet
+    return redirect(request, 'HTMLPAGENAME.htm', details) # Template not created yet
 
 
 
@@ -75,7 +97,6 @@ def FUNCTNAME(request):
 
 
 
-# User Registration 
 def FUNCTNAME(request):
     # Add code here
     details = {}

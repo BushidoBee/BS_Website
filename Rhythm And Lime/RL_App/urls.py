@@ -35,14 +35,14 @@ urlpatterns = [
     path(route='new-user', view=process.registerUser, name='NewAccount'),
 
     # About Us; Contact Information
-    # path(route='...', view=process.contact, name='About'),
+    path(route='about-us', view=process.contact, name='About'),
 
     # Current (Active) Ordering
-    # path(route='...', view=process.order_rental, name='Ordering'),
+    path(route='Order', view=process.order_rental, name='Ordering'),
 
     # Submit Orders/Rentals
-    # path(route='...', view=process.submit_rental, name='Rentals'),
+#    path(route='undefined_rt1', view=process.submit_rental, name='Rentals'),
 
     # Social Media view
-    # path(route='...', view=process.socmedia, name='Social'),
+#    path(route='...', view=process.socmedia, name='Social'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
