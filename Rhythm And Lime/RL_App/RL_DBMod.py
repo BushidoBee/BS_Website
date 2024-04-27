@@ -5,7 +5,7 @@ import json
 import datetime
 
 
-Time_Signature = now() # Submitted Timestamp
+# Time_Signature = now() # Submitted Timestamp
 
 # Users Database -- All Users registered at Rhy. & Lime
 class Account(models.Model):
